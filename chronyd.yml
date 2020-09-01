@@ -1,11 +1,6 @@
 ---
 - hosts: all
   tasks:
-    - name: make sure ntpd is disabled and stopped
-      service:
-        name: ntpd
-        state: stopped
-        enabled: false
     - name: enable and start chronyd
       service:
         name: chronyd
