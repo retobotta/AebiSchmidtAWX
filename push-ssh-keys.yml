@@ -1,0 +1,12 @@
+---
+- name: Push SSL keys
+  connection: local
+  gather_facts: false
+  hosts: all
+  vars:
+    ssh_key: '/data/projects/srv/files/id_rsa'
+  tasks:
+    - name: copy ssh key
+      authorized_key:
+        key: "{{ lookup('file', ssh_key) }}"
+        user: root

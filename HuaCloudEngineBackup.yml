@@ -1,0 +1,32 @@
+- name: CloudEngine command test
+  connection: local
+  hosts: all
+
+  gather_facts: no
+  vars:
+    cli:
+      host: "{{ inventory_hostname }}"
+#      username: Groupadmin
+#      password: W0rk1nNetw0rk$
+
+  tasks:
+  - name: Run display version on remote devices
+    ce_command:
+      commands: display version
+      provider: "{{ cli }}"
+
+  - name: Run display current config
+    ce_command:
+      commands: display current
+      provider: "{{ cli }}"
+
+#  - name: "Configure top level configuration and save it"
+#    ce_config:
+#      lines: sysname {{ inventory_hostname }}
+#      save: yes
+#      provider: "{{ cli }}"
+#  - name: backup config
+#    ce_config:
+#      lines: sysname {{ inventory_hostname }}
+#      provider: "{{ cli }}"
+#      backup: yes

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+    - name: add nfs config file
+      copy:
+       content: "/home/guests    -rw,vers=4.0, chbdipa01.ipa.aebi-schmidt.com:/home/guests"
+       dest: "/etc/auto.nfs"
+    - name: point auto.master to nfs config file
+      lineinfile:
+        path: /etc/auto.master
+        line: /-      /etc/auto.nfs --timeout 3600
+    - service:
+        name: autofs
+        state: started
+        enabled: true
