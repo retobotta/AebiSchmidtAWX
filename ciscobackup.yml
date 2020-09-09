@@ -9,6 +9,4 @@
      ios_command:
         commands:
          - show run
-        host: "{{ inventory_hostname }}"
-        username: Groupadmin
-        password: W0rk1nNetw0rk$
+ 
