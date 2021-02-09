@@ -3,4 +3,4 @@
   tasks:
    - name: backup device
      aireos_config:
-     backup: yes
+       backup: yes
